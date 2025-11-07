@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour 360</title>
+    <link rel="icon" type="image/png" href="assets/icono.png">
+    <link rel="stylesheet" href="css/tour.css">
+    <link rel="stylesheet" href="css/sweetalert-custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <main>
+        <h1 class="welcome-text">¡Bienvenido!</h1>
+        <p class="subtitle">Aprende todo sobre la experiencia de acampar</p>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🌲</div>
+                <h3>Experiencia Inmersiva</h3>
+                <p>Vive el camping en 360°</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌲</div>
+                <h3>Naturaleza Virtual</h3>
+                <p>Conecta con el aire libre</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌲</div>
+                <h3>Zonas Interactivas</h3>
+                <p>Descubre contenido único</p>
+            </div>
+        </div>
+        
+        <div class="hero-image" onclick="iniciarTour()">
+            <img src="assets/camp3.jpg" alt="Camping" class="camping-image">
+            <div class="image-overlay">
+                <span class="enter-text">ENTRAR</span>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">10</span>
+                <span class="stat-label">Zonas Interactivas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">360°</span>
+                <span class="stat-label">Experiencia Completa</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Inmersivo</span>
+            </div>
+        </div>
+        
+
+    </main>
+    
+    <footer>
+        <p>&copy; Gabriela Gomez Trejos. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        function iniciarTour() {
+            Swal.fire({
+                title: '¡Bienvenido al Tour 360!',
+                html: '<img src="assets/icono.png" class="custom-icon" style="width:80px; height:80px; animation: bounce 2s infinite;"><br><br>Prepárate para una experiencia inmersiva',
+                width: 700,
+                padding: '2rem',
+                background: 'linear-gradient(135deg, #1a4d3a 0%, #2d5a47 100%)',
+                color: '#ffffff',
+                confirmButtonText: 'Comenzar',
+                confirmButtonColor: '#4a7c59',
+                buttonsStyling: true,
+                customClass: {
+                    popup: 'camping-popup',
+                    title: 'camping-title',
+                    htmlContainer: 'camping-content',
+                    confirmButton: 'camping-button'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'tour.html';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

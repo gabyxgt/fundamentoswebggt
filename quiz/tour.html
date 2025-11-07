@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour 360</title>
+  <link rel="icon" type="image/png" href="assets/icono.png">
+  <link rel="stylesheet" href="css/tour.css">
+  <link rel="stylesheet" href="css/sweetalert-custom.css">
+  <link rel="stylesheet" href="css/infospot-custom.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body style="display:flex; flex-direction:column; min-height:100vh; margin:0;">
+  <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; flex:1; width:100vw; background:#1a4d3a; gap:20px; padding:20px; position:relative;">
+    <button id="backBtn" style="position:absolute; top:20px; left:20px; background:linear-gradient(145deg, #3d2f1f, #4a3728); color:white; border:2px solid #8b6545; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:600; transition:all 0.3s ease;" onclick="volverPortada()">← Volver</button>
+    <h1 style="color:white; font-size:48px; font-weight:bold; text-shadow:2px 2px 4px rgba(0,0,0,0.3); margin:0;">Camping</h1>
+    <div id="container" style="width:60vw; height:60vh; background:black; border-radius:10px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 101, 69, 0.3);"></div>
+  </div>
+  
+  <footer>
+    <p>&copy; Gabriela Gomez Trejos. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r105/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/pchen66/panolens.js@master/build/panolens.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="tour.js"></script>
+  <script>
+    function volverPortada() {
+      window.location.href = 'portada.html';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const backBtn = document.getElementById('backBtn');
+      backBtn.addEventListener('mouseenter', function() {
+        this.style.background = 'linear-gradient(145deg, #8b6545, #4a7c59)';
+        this.style.transform = 'translateY(-2px)';
+      });
+      backBtn.addEventListener('mouseleave', function() {
+        this.style.background = 'linear-gradient(145deg, #3d2f1f, #4a3728)';
+        this.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
