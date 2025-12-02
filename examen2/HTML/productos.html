@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Nuestros Productos</h1>
+                <p>Descubre nuestra amplia variedad de plantas tropicales y accesorios de jardinería</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" id="search-input" class="search-input" placeholder="Buscar productos..." onkeypress="if(event.key==='Enter') searchProducts()">
+                    <button onclick="searchProducts()" class="search-btn">🔍 Buscar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button onclick="filterByCategory('all', this)" class="filter-btn active">Todos</button>
+                    <button onclick="filterByCategory('plantas', this)" class="filter-btn">Plantas</button>
+                    <button onclick="filterByCategory('macetas', this)" class="filter-btn">Macetas</button>
+                    <button onclick="filterByCategory('fertilizantes', this)" class="filter-btn">Fertilizantes</button>
+                    <button onclick="filterByCategory('herramientas', this)" class="filter-btn">Herramientas</button>
+                    <button onclick="filterByCategory('sustratos', this)" class="filter-btn">Sustratos</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="container">
+                <div id="products-container" class="products-grid">
+
+                </div>
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="btn-primary" onclick="loadMoreProducts()" style="display: none;">Ver Más Productos</button>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <div id="lightbox-content"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+    </div>
+</body>
+</html>

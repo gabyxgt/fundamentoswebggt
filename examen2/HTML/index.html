@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pétalo Vivo - Vivero Costarricense</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+            <div class="language-switch">
+                <button id="lang-toggle" onclick="toggleLanguage()">🇺🇸 EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="slide active">
+                        <img src="../IMG/carrusel1.avif" alt="Plantas tropicales">
+                        <div class="slide-content">
+                            <h2 data-es="Bienvenidos a Pétalo Vivo" data-en="Welcome to Pétalo Vivo">Bienvenidos a Pétalo Vivo</h2>
+                            <p data-es="El mejor vivero de Costa Rica" data-en="Costa Rica's best nursery">El mejor vivero de Costa Rica</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="../IMG/carrusel2.avif" alt="Jardín tropical">
+                        <div class="slide-content">
+                            <h2 data-es="Plantas Tropicales Auténticas" data-en="Authentic Tropical Plants">Plantas Tropicales Auténticas</h2>
+                            <p data-es="Descubre la belleza de la flora costarricense" data-en="Discover the beauty of Costa Rican flora">Descubre la belleza de la flora costarricense</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="../IMG/carrusel3.avif" alt="Cuidado de plantas">
+                        <div class="slide-content">
+                            <h2 data-es="Asesoría Especializada" data-en="Expert Advice">Asesoría Especializada</h2>
+                            <p data-es="Te ayudamos a crear el jardín de tus sueños" data-en="We help you create the garden of your dreams">Te ayudamos a crear el jardín de tus sueños</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2 data-es="Lo que dicen nuestros clientes" data-en="What our customers say">Lo que dicen nuestros clientes</h2>
+                <div class="testimonial-container">
+                    <div class="testimonial active">
+                        <p data-es="Excelente servicio y plantas de calidad. Mi jardín nunca había lucido tan hermoso." data-en="Excellent service and quality plants. My garden has never looked so beautiful.">"Excelente servicio y plantas de calidad. Mi jardín nunca había lucido tan hermoso."</p>
+                        <cite>- María González, San José</cite>
+                    </div>
+                    <div class="testimonial">
+                        <p data-es="Los mejores precios y la mejor asesoría. Recomiendo Pétalo Vivo al 100%." data-en="The best prices and the best advice. I recommend Pétalo Vivo 100%.">"Los mejores precios y la mejor asesoría. Recomiendo Pétalo Vivo al 100%."</p>
+                        <cite>- Carlos Rodríguez, Cartago</cite>
+                    </div>
+                    <div class="testimonial">
+                        <p data-es="Plantas saludables y personal muy amable. Siempre encuentro lo que busco." data-en="Healthy plants and very friendly staff. I always find what I'm looking for.">"Plantas saludables y personal muy amable. Siempre encuentro lo que busco."</p>
+                        <cite>- Ana Jiménez, Heredia</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <div class="container">
+                <h2 data-es="Productos Destacados" data-en="Featured Products">Productos Destacados</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="../IMG/monstera.png" alt="Monstera">
+                        <h3>Monstera Deliciosa</h3>
+                        <p>₡15,000</p>
+                        <button onclick="addToCart('monstera', 'Monstera Deliciosa', 15000)" data-es="Agregar al carrito" data-en="Add to cart">Agregar al carrito</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../IMG/heliconia.png" alt="Heliconia">
+                        <h3>Heliconia</h3>
+                        <p>₡8,500</p>
+                        <button onclick="addToCart('heliconia', 'Heliconia', 8500)" data-es="Agregar al carrito" data-en="Add to cart">Agregar al carrito</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../IMG/bromelias.png" alt="Bromelias">
+                        <h3>Bromelias</h3>
+                        <p>₡12,000</p>
+                        <button onclick="addToCart('bromelia', 'Bromelias', 12000)" data-es="Agregar al carrito" data-en="Add to cart">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p data-es="Tu vivero de confianza en Costa Rica" data-en="Your trusted nursery in Costa Rica">Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-es="Contacto" data-en="Contact">Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-es="Suscríbete" data-en="Subscribe">Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit" data-es="Suscribir" data-en="Subscribe">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. <span data-es="Todos los derechos reservados" data-en="All rights reserved">Todos los derechos reservados</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Tu Carrito de Compras</h1>
+                <p>Revisa tus productos seleccionados antes de finalizar tu compra</p>
+            </div>
+        </section>
+
+        <section class="cart-section">
+            <div class="container">
+                <div class="cart-content">
+                    <div class="cart-items-section">
+                        <h2>Productos en tu Carrito</h2>
+                        <div id="cart-items" class="cart-items-container">
+                        </div>
+                        <div id="empty-cart" class="empty-cart" style="display: none; text-align: center; background: white; padding: 30px; border-radius: 10px;">
+                            <p>Tu carrito está vacío</p>
+                            <img src="../IMG/gif.gif" alt="Carrito vacío" style="width: 100px; height: 100px; margin: 20px 0; display: block; margin-left: auto; margin-right: auto;">
+                            <a href="productos.html" class="btn-primary" style="margin-top: 20px;">Ver Productos</a>
+                        </div>
+                    </div>
+
+                    <div class="cart-summary">
+                        <h3>Resumen del Pedido</h3>
+                        <div class="summary-line">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">₡0</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Envío:</span>
+                            <span id="shipping">₡2,500</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>IVA (13%):</span>
+                            <span id="tax">₡0</span>
+                        </div>
+                        <hr>
+                        <div class="summary-line total">
+                            <span><strong>Total:</strong></span>
+                            <span id="cart-total"><strong>₡0</strong></span>
+                        </div>
+
+                        <div class="shipping-options">
+                            <h4>Opciones de Entrega</h4>
+                            <label>
+                                <input type="radio" name="shipping" value="pickup" onchange="updateShipping()">
+                                Recoger en tienda (Gratis)
+                            </label>
+                            <label>
+                                <input type="radio" name="shipping" value="delivery" checked onchange="updateShipping()">
+                                Entrega a domicilio (₡2,500)
+                            </label>
+                        </div>
+
+                        <button id="checkout-btn" class="btn-primary checkout-btn" onclick="continuarConPago()">
+                            Proceder al Pago
+                        </button>
+
+                        <div class="payment-methods">
+                            <h4>Métodos de Pago Aceptados</h4>
+                            <div class="payment-icons">
+                                <span><img src="../ICONS/creditcard.png" alt="Tarjetas de Crédito" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Tarjetas de Crédito</span>
+                                <span><img src="../ICONS/transferencia.png" alt="Transferencia" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Transferencia</span>
+                                <span><img src="../ICONS/sinpe.png" alt="SINPE Móvil" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> SINPE Móvil</span>
+                                <span><img src="../ICONS/cash.png" alt="Efectivo" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Efectivo (si recoge en tienda)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cart-info">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><img src="../ICONS/plant.png" alt="Envío Gratis" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Envío Gratis</h3>
+                        <p>En compras mayores a ₡50,000 dentro del área metropolitana</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><img src="../ICONS/plant.png" alt="Compra Segura" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Compra Segura</h3>
+                        <p>Tus datos están protegidos con encriptación SSL</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><img src="../ICONS/plant.png" alt="Devoluciones" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Devoluciones</h3>
+                        <p>30 días para devoluciones en plantas con garantía</p>
+                    </div>
+                    <div class="info-card">
+                        <h3><img src="../ICONS/plant.png" alt="Soporte" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Soporte</h3>
+                        <p>Atención al cliente de lunes a sábado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommended-section">
+            <div class="container">
+                <h2>También te Puede Interesar</h2>
+                <div class="recommended-grid">
+                    <div class="product-card">
+                        <img src="../IMG/fertilizante.png" alt="Fertilizante">
+                        <h4>Fertilizante Orgánico</h4>
+                        <p>₡4,500</p>
+                        <button onclick="addToCart('fertilizante', 'Fertilizante Orgánico', 4500)">Agregar</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../IMG/macetabarro.png" alt="Maceta">
+                        <h4>Maceta de Barro</h4>
+                        <p>₡3,500</p>
+                        <button onclick="addToCart('maceta', 'Maceta de Barro', 3500)">Agregar</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../IMG/regadera.png" alt="Regadera">
+                        <h4>Regadera de Metal</h4>
+                        <p>₡8,000</p>
+                        <button onclick="addToCart('regadera', 'Regadera de Metal', 8000)">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <a href="../PDF/Manual de usuario.pdf" target="_blank" class="manual-btn">
+        📄 Manual de Usuario
+    </a>
+
+    <script src="../JS/script.js"></script>
+    <script>
+        function updateShipping() {
+            const shippingOption = document.querySelector('input[name="shipping"]:checked').value;
+            const shippingElement = document.getElementById('shipping');
+            const shippingCost = shippingOption === 'pickup' ? 0 : 2500;
+            shippingElement.textContent = `₡${shippingCost.toLocaleString()}`;
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const shippingCost = document.querySelector('input[name="shipping"]:checked').value === 'pickup' ? 0 : 2500;
+            const tax = Math.round(subtotal * 0.13);
+            const total = subtotal + shippingCost + tax;
+
+            document.getElementById('subtotal').textContent = `₡${subtotal.toLocaleString()}`;
+            document.getElementById('tax').textContent = `₡${tax.toLocaleString()}`;
+            document.getElementById('cart-total').innerHTML = `<strong>₡${total.toLocaleString()}</strong>`;
+        }
+
+        function continuarConPago() {
+            if (cart.length === 0) {
+                Swal.fire({
+                    title: 'Carrito vacío',
+                    text: 'No tienes productos en tu carrito',
+                    imageUrl: '../IMG/gif.gif',
+                    imageWidth: 100,
+                    imageHeight: 100,
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+                return;
+            }
+            
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const shippingCost = document.querySelector('input[name="shipping"]:checked').value === 'pickup' ? 0 : 2500;
+            const tax = Math.round(subtotal * 0.13);
+            const total = subtotal + shippingCost + tax;
+            const metodoEnvio = document.querySelector('input[name="shipping"]:checked').value;
+            
+            localStorage.setItem('resumen_carrito', JSON.stringify(cart));
+            localStorage.setItem('resumen_total', total);
+            localStorage.setItem('resumen_envio', metodoEnvio);
+            localStorage.setItem('resumen_pago', null);
+            
+            window.location.href = 'resumen-compra.html';
+        }
+
+
+
+        // Override displayCartItems to include total calculation
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyCart = document.getElementById('empty-cart');
+            
+            if (!cartItemsContainer) return;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.style.display = 'none';
+                emptyCart.style.display = 'block';
+                return;
+            }
+
+            cartItemsContainer.style.display = 'block';
+            emptyCart.style.display = 'none';
+            cartItemsContainer.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="item-info">
+                        <h4>${item.name}</h4>
+                        <p>₡${item.price.toLocaleString()} c/u</p>
+                    </div>
+                    <div class="item-controls">
+                        <button onclick="updateQuantity('${item.id}', -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="updateQuantity('${item.id}', 1)">+</button>
+                    </div>
+                    <div class="item-total">
+                        <span>₡${itemTotal.toLocaleString()}</span>
+                        <button onclick="removeFromCart('${item.id}')" class="remove-btn">🗑️</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            calculateTotal();
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    updateCartCount();
+                    saveCart();
+                    displayCartItems();
+                }
+            }
+        }
+
+
+    </script>
+    </div>
+</body>
+</html>

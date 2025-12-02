@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Contáctanos</h1>
+                <p>Estamos aquí para ayudarte con todas tus necesidades de jardinería</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Información de Contacto</h2>
+                        
+                        <div class="contact-item">
+                            <h3><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Ubicación</h3>
+                            <p>Avenida Central, San José<br>
+                            Costa Rica, 10101</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Teléfonos</h3>
+                            <p>Principal: +506 8338-8242<br>
+                            WhatsApp: +506 7203-8181</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Email</h3>
+                            <p>info@petalovivo.cr<br>
+                            ventas@petalovivo.cr</p>
+                        </div>
+
+                        <div class="contact-item">
+                            <h3><img src="../ICONS/clock.png" alt="Horarios" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Horarios</h3>
+                            <p>Lunes a Viernes: 8:00 AM - 5:00 PM<br>
+                            Sábados: 10:00 AM - 4:00 PM<br>
+                            Domingos: 10:00 AM - 4:00 PM</p>
+                        </div>
+
+                        <div class="social-links">
+                            <h3>Síguenos</h3>
+                            <div class="social-icons">
+                                <a href="#" target="_blank"><img src="../ICONS/fb.png" alt="Facebook" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Facebook</a>
+                                <a href="#" target="_blank"><img src="../ICONS/ig.png" alt="Instagram" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Instagram</a>
+                                <a href="#" target="_blank"><img src="../ICONS/twitter.png" alt="Twitter" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> Twitter</a>
+                                <a href="#" target="_blank"><img src="../ICONS/youtube.png" alt="YouTube" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> YouTube</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <h2>Envíanos un Mensaje</h2>
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nombre Completo *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="message">Mensaje *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+                            </div>
+
+
+
+                            <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="faq-section">
+            <div class="container">
+                <img src="../IMG/LOGO2.png" alt="Pétalo Vivo" style="width: 200px; height: auto; display: block; margin: 0 auto 20px auto;">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>¿Hacen entregas a domicilio?</h4>
+                        <p>Sí, realizamos entregas en el área metropolitana de San José. El costo varía según la distancia y el tamaño del pedido.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>¿Ofrecen garantía en las plantas?</h4>
+                        <p>Todas nuestras plantas tienen garantía de 30 días contra defectos de calidad, siempre que se sigan nuestras recomendaciones de cuidado.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>¿Puedo visitar el vivero sin cita previa?</h4>
+                        <p>Por supuesto, nuestro vivero está abierto al público en nuestros horarios regulares. Para servicios especializados recomendamos agendar cita.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>¿Aceptan tarjetas de crédito?</h4>
+                        <p>Sí, aceptamos efectivo, tarjetas de crédito y débito, así como transferencias bancarias para compras mayores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+    </div>
+</body>
+</html>

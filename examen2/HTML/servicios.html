@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Nuestros Servicios</h1>
+                <p>Servicios especializados para el cuidado y diseño de tus espacios verdes</p>
+            </div>
+        </section>
+
+        <section class="combos-section">
+            <div class="container">
+                <h2>Encuentra tu Servicio Ideal</h2>
+                
+                <div class="combo-card">
+                    <h3>Selecciona un Servicio</h3>
+                    <select id="combo-simple" onchange="mostrarPrecio()">
+                        <option value="">Elige un servicio...</option>
+                        <option value="mantenimiento">Mantenimiento de jardín</option>
+                        <option value="decoracion">Decoración con flores</option>
+                        <option value="macetas">Diseño de macetas personalizadas</option>
+                    </select>
+                    <div id="precio-servicio"></div>
+                </div>
+
+                <div class="combo-card">
+                    <h3>Servicios Especializados</h3>
+                    <select id="servicio-principal" onchange="actualizarVariedades()">
+                        <option value="">Selecciona un servicio...</option>
+                        <option value="mantenimiento">Mantenimiento de jardín</option>
+                        <option value="decoracion">Decoración con flores</option>
+                        <option value="macetas">Diseño de macetas personalizadas</option>
+                    </select>
+                    <select id="variedad-servicio">
+                        <option value="">Selecciona una variedad...</option>
+                    </select>
+                    <div id="detalle-servicio"></div>
+                </div>
+
+                <div class="combo-card">
+                    <h3>Recursos y Guías</h3>
+                    <select id="combo-recursos" onchange="abrirRecurso()">
+                        <option value="">Selecciona un recurso...</option>
+                        <option value="guia">Guía de mantenimiento</option>
+                        <option value="video">Video de diseño floral</option>
+                        <option value="catalogo">Catálogo de servicios</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="tira-fotografica">
+            <div class="container">
+                <h2>Galería de Nuestros Trabajos</h2>
+                <p>Descubre algunos de nuestros proyectos más destacados</p>
+                <div class="slider-container">
+                    <button class="slider-btn prev" onclick="moveSlider(-1)">❮</button>
+                    <div class="slider-wrapper">
+                        <div class="slider-track" id="slider-track">
+                            <div class="slider-item">
+                                <img src="../IMG/tira1.png" alt="Proyecto 1">
+                            </div>
+                            <div class="slider-item">
+                                <img src="../IMG/tira2.png" alt="Proyecto 2">
+                            </div>
+                            <div class="slider-item">
+                                <img src="../IMG/tira3.png" alt="Proyecto 3">
+                            </div>
+                            <div class="slider-item">
+                                <img src="../IMG/tira4.png" alt="Proyecto 4">
+                            </div>
+                            <div class="slider-item">
+                                <img src="../IMG/tira5.png" alt="Proyecto 5">
+                            </div>
+                            <div class="slider-item">
+                                <img src="../IMG/tira6.png" alt="Proyecto 6">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-btn next" onclick="moveSlider(1)">❯</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        function mostrarPrecio() {
+            var combo = document.getElementById('combo-simple');
+            var precioDiv = document.getElementById('precio-servicio');
+            
+            if (combo.value === 'mantenimiento') {
+                precioDiv.innerHTML = '<div class="precio-display"><strong>Precio:</strong> ₡25,000/mes</div>';
+            } else if (combo.value === 'decoracion') {
+                precioDiv.innerHTML = '<div class="precio-display"><strong>Precio:</strong> ₡15,000 por arreglo</div>';
+            } else if (combo.value === 'macetas') {
+                precioDiv.innerHTML = '<div class="precio-display"><strong>Precio:</strong> ₡8,500 por maceta</div>';
+            } else {
+                precioDiv.innerHTML = '';
+            }
+        }
+
+        function actualizarVariedades() {
+            var servicio = document.getElementById('servicio-principal').value;
+            var variedadCombo = document.getElementById('variedad-servicio');
+            var detalleDiv = document.getElementById('detalle-servicio');
+            
+            variedadCombo.innerHTML = '<option value="">Selecciona una variedad...</option>';
+            detalleDiv.innerHTML = '';
+            
+            if (servicio === 'mantenimiento') {
+                variedadCombo.innerHTML += '<option value="pequeno">Jardín pequeño</option>';
+                variedadCombo.innerHTML += '<option value="grande">Jardín grande</option>';
+            } else if (servicio === 'decoracion') {
+                variedadCombo.innerHTML += '<option value="mesa">Arreglo para mesa</option>';
+                variedadCombo.innerHTML += '<option value="evento">Arreglo para evento</option>';
+            } else if (servicio === 'macetas') {
+                variedadCombo.innerHTML += '<option value="interior">Maceta interior</option>';
+                variedadCombo.innerHTML += '<option value="exterior">Maceta exterior</option>';
+            }
+            
+            variedadCombo.onchange = function() {
+                mostrarDetalle();
+            };
+        }
+
+        function mostrarDetalle() {
+            var variedad = document.getElementById('variedad-servicio').value;
+            var detalleDiv = document.getElementById('detalle-servicio');
+            
+            if (variedad === 'pequeno') {
+                detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo1.png" alt="Jardín pequeño"><p>Mantenimiento completo para jardines de hasta 50m². Incluye poda, riego y fertilización.</p></div>';
+            } else if (variedad === 'grande') {
+                detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo2.png" alt="Jardín grande"><p>Servicio integral para jardines extensos. Incluye diseño paisajístico y mantenimiento especializado.</p></div>';
+            } else if (variedad === 'mesa') {
+                detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo3.png" alt="Arreglo mesa"><p>Arreglos florales elegantes para mesas de comedor o centros de mesa especiales.</p></div>';
+            } else if (variedad === 'evento') {
+                detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo4.png" alt="Arreglo evento"><p>Decoración floral completa para bodas, cumpleaños y eventos especiales.</p></div>';
+            } else if (variedad === 'interior') {
+                detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo5.png" alt="Maceta interior"><p>Macetas diseñadas para espacios interiores con plantas que purifican el aire.</p></div>';
+            } else if (variedad === 'exterior') {
+                detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo6.png" alt="Maceta exterior"><p>Macetas resistentes al clima tropical, perfectas para patios y jardines.</p></div>';
+            } else {
+                detalleDiv.innerHTML = '';
+            }
+        }
+
+        function abrirRecurso() {
+            var recurso = document.getElementById('combo-recursos').value;
+            
+            if (recurso === 'guia') {
+                window.open('../PDF/Guía de Mantenimiento de Plantas – Pétalo Vivo.pdf', '_blank');
+            } else if (recurso === 'video') {
+                window.open('https://www.youtube.com/watch?v=n49nLYhHm3E', '_blank');
+            } else if (recurso === 'catalogo') {
+                window.open('https://example.com/catalogo-servicios.pdf', '_blank');
+            }
+            
+            document.getElementById('combo-recursos').value = '';
+        }
+    </script>
+    <script src="../JS/script.js"></script>
+    </div>
+</body>
+</html>

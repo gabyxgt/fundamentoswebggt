@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Compra - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <style>
+        .resumen-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .resumen-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="../JS/emailjs-init.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Resumen de Compra</h1>
+                <p>Revisa tu pedido antes de confirmar la compra</p>
+            </div>
+        </section>
+
+        <section class="purchase-summary">
+            <div class="container">
+                <div class="resumen-grid">
+                    <div class="col-izquierda">
+                        <div class="form-section">
+                            <h3>Datos del Cliente</h3>
+                            <form id="customer-form">
+                                <div class="form-group">
+                                    <label for="customer-name">Nombre Completo *</label>
+                                    <input type="text" id="customer-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer-email">Email *</label>
+                                    <input type="email" id="customer-email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer-phone">Teléfono *</label>
+                                    <input type="tel" id="customer-phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer-address">Dirección *</label>
+                                    <textarea id="customer-address" rows="3" required></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="payment-methods-section">
+                            <h3>Método de Pago</h3>
+                            <div class="payment-options">
+                                <label>
+                                    <input type="radio" name="payment" value="card" checked>
+                                    Tarjeta de Crédito/Débito
+                                </label>
+                                <label>
+                                    <input type="radio" name="payment" value="transfer">
+                                    Transferencia Bancaria
+                                </label>
+                                <label>
+                                    <input type="radio" name="payment" value="cash">
+                                    Pago Contra Entrega
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <a href="carrito.html" class="btn-secondary">Volver al Carrito</a>
+                            <button id="confirm-purchase-btn" class="btn-primary" onclick="confirmPurchase()">Confirmar Compra</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-derecha">
+                        <div class="summary-card">
+                            <h2>Productos en tu Pedido</h2>
+                            <div id="purchase-items">
+                            </div>
+                            <div class="purchase-totals">
+                                <div class="total-line">
+                                    <span>Subtotal:</span>
+                                    <span id="order-subtotal">₡0</span>
+                                </div>
+                                <div class="total-line">
+                                    <span>Envío:</span>
+                                    <span id="order-shipping">₡2,500</span>
+                                </div>
+                                <div class="total-line">
+                                    <span>IVA (13%):</span>
+                                    <span id="order-tax">₡0</span>
+                                </div>
+                                <hr>
+                                <div class="total-line total">
+                                    <span><strong>Total:</strong></span>
+                                    <span id="order-total"><strong>₡0</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+
+    <script>
+        let orderCart = JSON.parse(localStorage.getItem('resumen_carrito')) || [];
+        let orderTotal = parseInt(localStorage.getItem('resumen_total')) || 0;
+        let shippingMethod = localStorage.getItem('resumen_envio') || 'delivery';
+        let shippingCost = shippingMethod === 'pickup' ? 0 : 2500;
+        
+        function displayOrderItems() {
+            const itemsContainer = document.getElementById('purchase-items');
+            if (!itemsContainer || orderCart.length === 0) {
+                if (itemsContainer) {
+                    itemsContainer.innerHTML = '<p>No hay productos en el carrito</p>';
+                }
+                return;
+            }
+            
+            itemsContainer.innerHTML = '';
+            orderCart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'order-item';
+                itemDiv.innerHTML = `
+                    <div class="item-info">
+                        <h4>${item.name}</h4>
+                        <p>₡${item.price.toLocaleString()} x ${item.quantity}</p>
+                    </div>
+                    <div class="item-total">
+                        <span>₡${itemTotal.toLocaleString()}</span>
+                    </div>
+                `;
+                itemsContainer.appendChild(itemDiv);
+            });
+            
+            calculateOrderTotal();
+        }
+        
+        function calculateOrderTotal() {
+            const subtotal = orderCart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const tax = Math.round(subtotal * 0.13);
+            const total = subtotal + shippingCost + tax;
+            
+            document.getElementById('order-subtotal').textContent = `₡${subtotal.toLocaleString()}`;
+            document.getElementById('order-shipping').textContent = `₡${shippingCost.toLocaleString()}`;
+            document.getElementById('order-tax').textContent = `₡${tax.toLocaleString()}`;
+            document.getElementById('order-total').innerHTML = `<strong>₡${total.toLocaleString()}</strong>`;
+        }
+        
+        function confirmPurchase() {
+            if (orderCart.length === 0) {
+                alert('No hay productos para confirmar');
+                return;
+            }
+            
+            const customerName = document.getElementById('customer-name').value;
+            const customerEmail = document.getElementById('customer-email').value;
+            const customerPhone = document.getElementById('customer-phone').value;
+            const customerAddress = document.getElementById('customer-address').value;
+            
+            if (!customerName || !customerEmail || !customerPhone || !customerAddress) {
+                alert('Por favor completa todos los campos obligatorios');
+                return;
+            }
+            
+            const subtotal = orderCart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const tax = Math.round(subtotal * 0.13);
+            const total = subtotal + shippingCost + tax;
+            
+
+            localStorage.setItem('customer_name', customerName);
+            localStorage.setItem('purchase_total', total);
+            
+            window.location.href = 'confirmacion.html';
+        }
+        
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrderItems();
+        });
+    </script>
+    </div>
+</body>
+</html>

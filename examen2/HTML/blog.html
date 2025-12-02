@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Blog de Jardinería</h1>
+                <p>Consejos, tips y novedades del mundo de las plantas y flores!</p>
+            </div>
+        </section>
+
+        <section class="blog-content">
+            <div class="container">
+                <div class="blog-grid">
+                    <div class="blog-main">
+                        <article class="blog-post">
+                            <img src="../IMG/blog1.png" alt="Plantas tropicales">
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="date">15 de Marzo, 2025</span>
+                                </div>
+                                <h2>Guía Completa para el Cuidado de Plantas Tropicales en Costa Rica</h2>
+                                <p>Las plantas tropicales requieren cuidados específicos para prosperar en nuestro clima. En esta guía completa te enseñamos todo lo que necesitas saber para mantener tus plantas saludables durante todo el año.</p>
+                                <p>Costa Rica, con su clima tropical y alta humedad, ofrece condiciones ideales para una gran variedad de plantas. Sin embargo, factores como la estación seca y lluviosa requieren ajustes en nuestros cuidados...</p>
+                                <a href="#" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <img src="../IMG/blog2.png" alt="Vertical">
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="date">10 de Abril, 2025</span>
+                                </div>
+                                <h3>Todo sobre jardínes verticales</h3>
+                                <p>Descubre cómo los jardines verticales pueden transformar incluso los espacios más pequeños en auténticos rincones verdes. Aprende qué plantas funcionan mejor, cómo estructurar un muro vivo resistente al clima tropical y por qué esta tendencia está conquistando hogares y apartamentos en Costa Rica.</p>
+                                <a href="#" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <img src="../IMG/blog3.png" alt="Orquídeas">
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="date">22 de Junio, 2025</span>
+                                </div>
+                                <h3>Cultivo de Orquídeas: Secretos de los Expertos</h3>
+                                <p>Las orquídeas pueden parecer complicadas, pero con los conocimientos correctos, cualquiera puede cultivar estas hermosas flores. Te compartimos los secretos que hemos aprendido en más de 20 años.</p>
+                                <a href="#" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <img src="../IMG/blog4.png" alt="Colibris-Mariposas">
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="date">18 de Agosto, 2025</span>
+                                </div>
+                                <h3>10 plantas para atraer colibríes y mariposas a tu jardín</h3>
+                                <p>Heliconias, verbenas, lantanas, salvias y rabo de gato son ideales para atraer colibríes y mariposas gracias a su alto néctar y colores intensos. Son fáciles de cuidar y crecen muy bien en el clima tropical de Costa Rica.</p>
+                                <a href="#" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <img src="../IMG/blog5.png" alt="Fertilización">
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="date">20 de Febrero, 2024</span>
+                                </div>
+                                <h3>Fertilización Orgánica: Alimenta tus Plantas Naturalmente</h3>
+                                <p>La fertilización orgánica no solo es mejor para el medio ambiente, sino que también produce plantas más saludables y resistentes. Descubre cómo hacer tus propios fertilizantes caseros.</p>
+                                <a href="#" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+
+                        <article class="blog-post">
+                            <img src="../IMG/blog6.png" alt="Diseño">
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="date">15 de Febrero, 2024</span>
+                                </div>
+                                <h3>Diseño de Jardín: Cómo Crear un Espacio Armonioso</h3>
+                                <p>Si eres nuevo en el mundo de las plantas de interior, esta lista te ayudará a comenzar con especies resistentes y fáciles de cuidar que purificarán el aire de tu hogar.</p>
+                                <a href="#" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+    </div>
+</body>
+</html>

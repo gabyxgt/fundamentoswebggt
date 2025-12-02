@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="encuesta.html">Encuesta</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Encuesta de Satisfacción</h1>
+                <p>Tu opinión es muy importante para nosotros. Ayúdanos a mejorar nuestros servicios</p>
+            </div>
+        </section>
+
+        <section class="survey-section">
+            <div class="container">
+                <div class="survey-container">
+                    <div class="survey-intro">
+                        <h2>¡Queremos conocer tu experiencia!</h2>
+                        <p>En Pétalo Vivo nos esforzamos constantemente por brindar el mejor servicio y productos de calidad. Tu feedback nos ayuda a seguir creciendo y mejorando.</p>
+                        <p><strong>Tiempo estimado:</strong> 3-5 minutos</p>
+                    </div>
+
+                    <form id="survey-form" class="survey-form">
+                        <div class="form-section">
+                            <h3>Información Personal</h3>
+                            
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Correo</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Evaluación</h3>
+                            
+                            <div class="form-group">
+                                <label>¿Cómo calificarías nuestro servicio?</label>
+                                <div class="rating-group">
+                                    <label><input type="radio" name="service_rating" value="5" required> 5 - Excelente</label>
+                                    <label><input type="radio" name="service_rating" value="4"> 4 - Muy bueno</label>
+                                    <label><input type="radio" name="service_rating" value="3"> 3 - Bueno</label>
+                                    <label><input type="radio" name="service_rating" value="2"> 2 - Regular</label>
+                                    <label><input type="radio" name="service_rating" value="1"> 1 - Malo</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Productos</h3>
+                            
+                            <div class="form-group">
+                                <label>¿Qué productos compraste?</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="products[]" value="plantas"> Plantas</label>
+                                    <label><input type="checkbox" name="products[]" value="macetas"> Macetas</label>
+                                    <label><input type="checkbox" name="products[]" value="fertilizantes"> Fertilizantes</label>
+                                    <label><input type="checkbox" name="products[]" value="herramientas"> Herramientas</label>
+                                    <label><input type="checkbox" name="products[]" value="servicios"> Servicios de diseño</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Recomendación</h3>
+                            
+                            <div class="form-group">
+                                <label>¿Recomendarías Pétalo Vivo?</label>
+                                <div class="rating-group">
+                                    <label><input type="radio" name="recommend" value="si" required> Sí</label>
+                                    <label><input type="radio" name="recommend" value="no"> No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Comentarios</h3>
+                            
+                            <div class="form-group">
+                                <label for="comments">Comentario general</label>
+                                <textarea id="comments" name="comments" rows="4" placeholder="Comparte tu experiencia con nosotros..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Enviar Encuesta</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="thank-you-section" style="display: none;" id="thank-you-section">
+            <div class="container">
+                <div class="thank-you-content survey-thank-you-card">
+                    <h2>¡Muchas Gracias!</h2>
+                    <p>Tu opinión es muy valiosa para nosotros. Hemos recibido tus respuestas y las utilizaremos para seguir mejorando nuestros productos y servicios.</p>
+                    <p>Como agradecimiento, te ofrecemos un <strong>10% de descuento</strong> en tu próxima compra. Usa el código: <strong>ENCUESTA10</strong></p>
+                    <a href="index.html" class="btn-primary">Volver al Inicio</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+    <script>
+        // Manejo de estados visuales para la encuesta
+        document.addEventListener('DOMContentLoaded', function() {
+            // Radios
+            const radioInputs = document.querySelectorAll('.survey-form input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    // Remover clase de todos los labels del mismo grupo
+                    const groupName = this.name;
+                    document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
+                        radio.closest('label').classList.remove('survey-selected');
+                    });
+                    // Agregar clase al label seleccionado
+                    this.closest('label').classList.add('survey-selected');
+                });
+            });
+            
+            // Checkboxes
+            const checkboxInputs = document.querySelectorAll('.survey-form input[type="checkbox"]');
+            checkboxInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.closest('label').classList.add('survey-selected');
+                    } else {
+                        this.closest('label').classList.remove('survey-selected');
+                    }
+                });
+            });
+        });
+    </script>
+    </div>
+</body>
+</html>

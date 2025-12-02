@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Pétalo Vivo</title>
+    <link rel="icon" type="image/jpeg" href="../IMG/favicon.jpg">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="../JS/emailjs-init.js"></script>
+</head>
+<body>
+    <div class="site-wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../IMG/LOGO1.png" alt="Pétalo Vivo">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">🛒 <span id="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Galería de Imágenes</h1>
+                <p>Descubre la belleza de nuestras plantas y proyectos realizados</p>
+            </div>
+        </section>
+
+        <section class="gallery-categories">
+            <div class="container">
+                <div class="category-tabs">
+                    <button class="tab-button active" onclick="filterGallery('all', this)">Todas</button>
+                    <button class="tab-button" onclick="filterGallery('plantas', this)">Plantas</button>
+                    <button class="tab-button" onclick="filterGallery('jardines', this)">Jardines</button>
+                    <button class="tab-button" onclick="filterGallery('proyectos', this)">Proyectos</button>
+                    <button class="tab-button" onclick="filterGallery('videos', this)">Videos</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-main">
+            <div class="container">
+                <div class="gallery-grid" id="gallery-grid">
+
+                    <div class="gallery-item" data-category="plantas" onclick="openLightbox('../IMG/monstera.png', 'image')">
+                        <img src="../IMG/monstera.png" alt="Monstera Deliciosa">
+                        <div class="gallery-overlay">
+                            <h4>Monstera Deliciosa</h4>
+                            <p>Planta tropical de interior</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="plantas" onclick="openLightbox('../IMG/heliconia.png', 'image')">
+                        <img src="../IMG/heliconia.png" alt="Heliconia">
+                        <div class="gallery-overlay">
+                            <h4>Heliconia</h4>
+                            <p>Flor tropical costarricense</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="plantas" onclick="openLightbox('../IMG/orchids.png', 'image')">
+                        <img src="../IMG/orchids.png" alt="Orquídea">
+                        <div class="gallery-overlay">
+                            <h4>Orquídea Cattleya</h4>
+                            <p>Flor nacional de Costa Rica</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="plantas" onclick="openLightbox('../IMG/anturiorojo.png', 'image')">
+                        <img src="../IMG/anturiorojo.png" alt="Anturio">
+                        <div class="gallery-overlay">
+                            <h4>Anturio Rojo</h4>
+                            <p>Planta de interior elegante</p>
+                        </div>
+                    </div>
+
+
+                    <div class="gallery-item" data-category="jardines" onclick="openLightbox('../IMG/jardintropical.png', 'image')">
+                        <img src="../IMG/jardintropical.png" alt="Jardín Tropical">
+                        <div class="gallery-overlay">
+                            <h4>Jardín Tropical</h4>
+                            <p>Diseño con plantas nativas</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="jardines" onclick="openLightbox('../IMG/jardinresidencial.png', 'image')">
+                        <img src="../IMG/jardinresidencial.png" alt="Jardín Residencial">
+                        <div class="gallery-overlay">
+                            <h4>Jardín Residencial</h4>
+                            <p>Proyecto en Escazú</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="jardines" onclick="openLightbox('../IMG/jardinvertical.png', 'image')">
+                        <img src="../IMG/jardinvertical.png" alt="Jardín Vertical">
+                        <div class="gallery-overlay">
+                            <h4>Jardín Vertical</h4>
+                            <p>Solución para espacios pequeños</p>
+                        </div>
+                    </div>
+
+
+                    <div class="gallery-item" data-category="proyectos" onclick="openLightbox('../IMG/jardincorporativo.png', 'image')">
+                        <img src="../IMG/jardincorporativo.png" alt="Proyecto Corporativo">
+                        <div class="gallery-overlay">
+                            <h4>Proyecto Corporativo</h4>
+                            <p>Oficinas en Santa Ana</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="proyectos" onclick="openLightbox('../IMG/jardinhotel.png', 'image')">
+                        <img src="../IMG/jardinhotel.png" alt="Hotel Boutique">
+                        <div class="gallery-overlay">
+                            <h4>Hotel Boutique</h4>
+                            <p>Paisajismo en Manuel Antonio</p>
+                        </div>
+                    </div>
+
+
+                    <div class="gallery-item video-item" data-category="videos" onclick="openLightbox('../VIDEOS/VIDEO1.mp4', 'video')">
+                        <img src="../IMG/videoback.png" alt="Video Tutorial">
+                        <div class="gallery-overlay">
+                            <h4>Cuidado de Plantas</h4>
+                            <p>Tutorial básico</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item video-item" data-category="videos" onclick="openLightbox('../VIDEOS/VIDEO2.mp4', 'video')">
+                        <img src="../IMG/videoback.png" alt="Video Proyecto">
+                        <div class="gallery-overlay">
+                            <h4>Proceso de Diseño</h4>
+                            <p>De la idea a la realidad</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="testimonials-gallery">
+            <div class="container">
+                <img src="../IMG/LOGO2.png" alt="Pétalo Vivo" style="width: 150px; height: auto; display: block; margin: 0 auto 2rem auto;">
+                <h2>Testimonios de Nuestros Proyectos</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <img src="../IMG/cliente1.png" alt="Cliente">
+                        <p>"El diseño de mi jardín superó todas mis expectativas. Cada planta fue seleccionada perfectamente."</p>
+                        <cite>- Ana María Solís</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="../IMG/cliente2.png" alt="Cliente">
+                        <p>"Profesionales excepcionales. Mi oficina ahora tiene un ambiente más fresco y natural."</p>
+                        <cite>- Carlos Mendoza</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="../IMG/cliente3.png" alt="Cliente">
+                        <p>"La calidad de las plantas y el servicio post-venta son incomparables."</p>
+                        <cite>- Roberto Jiménez</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <div id="lightbox-content"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pétalo Vivo</h3>
+                    <p>Tu vivero de confianza en Costa Rica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><img src="../ICONS/pin.png" alt="Ubicación" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> San José, Costa Rica</p>
+                    <p><img src="../ICONS/phone.png" alt="Teléfono" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> +506 8338-8242</p>
+                    <p><img src="../ICONS/email.png" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;"> info@petalovivo.cr</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suscríbete</h3>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Tu email" required>
+                        <button type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pétalo Vivo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../JS/script.js"></script>
+    <script>
+        function filterGallery(category, button) {
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filtrar
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    </div>
+</body>
+</html>

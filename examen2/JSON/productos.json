@@ -1,0 +1,162 @@
+[
+  {
+    "id": "monstera",
+    "name": "Monstera Deliciosa",
+    "price": 15000,
+    "description": "Planta tropical de hojas grandes y perforadas, perfecta para interiores",
+    "image": "../IMG/monstera.png",
+    "category": "plantas"
+  },
+  {
+    "id": "heliconia",
+    "name": "Heliconia",
+    "price": 8500,
+    "description": "Flor tropical colorida, ideal para jardines exteriores",
+    "image": "../IMG/heliconia.png",
+    "category": "plantas"
+  },
+  {
+    "id": "bromelia",
+    "name": "Bromelias",
+    "price": 12000,
+    "description": "Plantas epífitas con flores vibrantes, típicas de Costa Rica",
+    "image": "../IMG/bromelias.png",
+    "category": "plantas"
+  },
+  {
+    "id": "orquidea",
+    "name": "Orquídea Cattleya",
+    "price": 25000,
+    "description": "Orquídea nacional de Costa Rica, flor exótica y elegante",
+    "image": "../IMG/guaria.png",
+    "category": "plantas"
+  },
+  {
+    "id": "anturio",
+    "name": "Anturio Rojo",
+    "price": 18000,
+    "description": "Planta de interior con flores rojas brillantes y duraderas",
+    "image": "../IMG/anturiorojo.png",
+    "category": "plantas"
+  },
+  {
+    "id": "palma-areca",
+    "name": "Palma Areca",
+    "price": 22000,
+    "description": "Palma elegante para interiores, purifica el aire naturalmente",
+    "image": "../IMG/palma.png",
+    "category": "plantas"
+  },
+  {
+    "id": "fertilizante-organico",
+    "name": "Fertilizante Orgánico 5kg",
+    "price": 4500,
+    "description": "Abono orgánico natural para todo tipo de plantas",
+    "image": "../IMG/fertilizante.png",
+    "category": "fertilizantes"
+  },
+  {
+    "id": "regadera",
+    "name": "Regadera de Metal 10L",
+    "price": 8000,
+    "description": "Regadera resistente de metal galvanizado",
+    "image": "../IMG/regadera.png",
+    "category": "herramientas"
+  },
+  {
+    "id": "maceta-barro",
+    "name": "Maceta de Barro",
+    "price": 3500,
+    "description": "Maceta tradicional de barro cocido, ideal para plantas medianas",
+    "image": "../IMG/macetabarro.png",
+    "category": "macetas"
+  },
+  {
+    "id": "tierra-abono",
+    "name": "Tierra con Abono 20kg",
+    "price": 6000,
+    "description": "Mezcla premium de tierra negra con abono orgánico",
+    "image": "../IMG/soil.png",
+    "category": "sustratos"
+  },
+  {
+    "id": "jade",
+    "name": "Jade",
+    "price": 12000,
+    "description": "Suculenta resistente con hojas carnosas. Requiere poca agua y mucha luz.",
+    "image": "../IMG/jade.png",
+    "category": "plantas"
+  },
+  {
+    "id": "aloe",
+    "name": "Aloe Vera",
+    "price": 35000,
+    "description": "Suculenta con gel medicinal y de fácil cuidado.",
+    "image": "../IMG/aloe.png",
+    "category": "plantas"
+  },
+  {
+    "id": "cactus-barrel",
+    "name": "Cactus Barrel",
+    "price": 8000,
+    "description": "Cactus resistente de forma esférica, ideal para principiantes",
+    "image": "../IMG/cacti.png",
+    "category": "plantas"
+  },
+  {
+    "id": "bonsai",
+    "name": "Bonsai",
+    "price": 22000,
+    "description": "Árbol miniatura cultivado en maceta mediante poda y modelado.",
+    "image": "../IMG/bonsai.png",
+    "category": "plantas"
+  },
+  {
+    "id": "fertilizante-liquido",
+    "name": "Fertilizante Líquido",
+    "price": 6500,
+    "description": "Fertilizante líquido concentrado para plantas tropicales",
+    "image": "../IMG/liquido.png",
+    "category": "fertilizantes"
+  },
+  {
+    "id": "helecho-boston",
+    "name": "Helecho Boston",
+    "price": 14000,
+    "description": "Helecho frondoso ideal para espacios con poca luz",
+    "image": "../IMG/fern.png",
+    "category": "plantas"
+  },
+  {
+    "id": "calathea",
+    "name": "Calathea",
+    "price": 16000,
+    "description": "Planta tropical de hojas decorativas que prefiere sombra y humedad",
+    "image": "../IMG/calathea.png",
+    "category": "plantas"
+  },
+  {
+    "id": "semillas",
+    "name": "Semillas Variadas",
+    "price": 3500,
+    "description": "Pequeñas semillas listas para sembrar y cultivar nuevas plantas en casa.",
+    "image": "../IMG/semillas.png",
+    "category": "herramientas"
+  },
+  {
+    "id": "maceta-plastico",
+    "name": "Maceta de Plástico",
+    "price": 15000,
+    "description": "Maceta de plástico ligera y resistente, fácil de mover y perfecta para todo tipo de plantas.",
+    "image": "../IMG/macetaplas.png",
+    "category": "macetas"
+  },
+  {
+    "id": "pala-jardineria",
+    "name": "Pala de Jardinería",
+    "price": 4500,
+    "description": "Pala pequeña de acero inoxidable con mango ergonómico para trasplantes y siembra.",
+    "image": "../IMG/pala.png",
+    "category": "herramientas"
+  }
+]
