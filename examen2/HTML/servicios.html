@@ -54,6 +54,7 @@
                         <option value="macetas">Diseño de macetas personalizadas</option>
                     </select>
                     <div id="precio-servicio"></div>
+                    <button id="contratar-simple" class="btn-primary" style="display: none; margin-top: 1rem; margin-left: auto; margin-right: auto;" onclick="contratarServicio()">Contratar Servicio</button>
                 </div>
 
                 <div class="combo-card">
@@ -68,6 +69,7 @@
                         <option value="">Selecciona una variedad...</option>
                     </select>
                     <div id="detalle-servicio"></div>
+                    <button id="contratar-especializado" class="btn-primary" style="display: none; margin-top: 1rem; margin-left: auto; margin-right: auto;" onclick="contratarServicio()">Contratar Servicio</button>
                 </div>
 
                 <div class="combo-card">
@@ -148,15 +150,20 @@
         function mostrarPrecio() {
             var combo = document.getElementById('combo-simple');
             var precioDiv = document.getElementById('precio-servicio');
+            var boton = document.getElementById('contratar-simple');
             
             if (combo.value === 'mantenimiento') {
                 precioDiv.innerHTML = '<div class="precio-display"><strong>Precio:</strong> ₡25,000/mes</div>';
+                boton.style.display = 'block';
             } else if (combo.value === 'decoracion') {
                 precioDiv.innerHTML = '<div class="precio-display"><strong>Precio:</strong> ₡15,000 por arreglo</div>';
+                boton.style.display = 'block';
             } else if (combo.value === 'macetas') {
                 precioDiv.innerHTML = '<div class="precio-display"><strong>Precio:</strong> ₡8,500 por maceta</div>';
+                boton.style.display = 'block';
             } else {
                 precioDiv.innerHTML = '';
+                boton.style.display = 'none';
             }
         }
 
@@ -187,22 +194,45 @@
         function mostrarDetalle() {
             var variedad = document.getElementById('variedad-servicio').value;
             var detalleDiv = document.getElementById('detalle-servicio');
+            var boton = document.getElementById('contratar-especializado');
             
             if (variedad === 'pequeno') {
                 detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo1.png" alt="Jardín pequeño"><p>Mantenimiento completo para jardines de hasta 50m². Incluye poda, riego y fertilización.</p></div>';
+                boton.style.display = 'block';
             } else if (variedad === 'grande') {
                 detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo2.png" alt="Jardín grande"><p>Servicio integral para jardines extensos. Incluye diseño paisajístico y mantenimiento especializado.</p></div>';
+                boton.style.display = 'block';
             } else if (variedad === 'mesa') {
                 detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo3.png" alt="Arreglo mesa"><p>Arreglos florales elegantes para mesas de comedor o centros de mesa especiales.</p></div>';
+                boton.style.display = 'block';
             } else if (variedad === 'evento') {
                 detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo4.png" alt="Arreglo evento"><p>Decoración floral completa para bodas, cumpleaños y eventos especiales.</p></div>';
+                boton.style.display = 'block';
             } else if (variedad === 'interior') {
                 detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo5.png" alt="Maceta interior"><p>Macetas diseñadas para espacios interiores con plantas que purifican el aire.</p></div>';
+                boton.style.display = 'block';
             } else if (variedad === 'exterior') {
                 detalleDiv.innerHTML = '<div class="servicio-detalle"><img src="../IMG/combo6.png" alt="Maceta exterior"><p>Macetas resistentes al clima tropical, perfectas para patios y jardines.</p></div>';
+                boton.style.display = 'block';
             } else {
                 detalleDiv.innerHTML = '';
+                boton.style.display = 'none';
             }
+        }
+        
+        function contratarServicio() {
+            Swal.fire({
+                title: '¡Servicio Seleccionado!',
+                text: 'Gracias por tu interés. Te contactaremos pronto.',
+                imageUrl: '../IMG/gif.gif',
+                imageWidth: 100,
+                imageHeight: 100,
+                confirmButtonText: 'Aceptar',
+                customClass: {
+                    confirmButton: 'swal-btn-primary'
+                },
+                buttonsStyling: false
+            });
         }
 
         function abrirRecurso() {

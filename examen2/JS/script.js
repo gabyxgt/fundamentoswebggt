@@ -2,7 +2,13 @@ let currentLanguage = 'es';
 let currentSlide = 0;
 let currentTestimonial = 0;
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+let allProducts = [];
+let displayedProducts = 0;
+let currentCategory = 'all';
+let sliderPosition = 0;
+let galleryImages = [];
+let currentImageIndex = 0;
+const productsPerPage = 9;
 
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
@@ -17,7 +23,6 @@ function updateLanguage() {
     });
 }
 
-
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.slide');
     slides[currentSlide].classList.remove('active');
@@ -29,13 +34,11 @@ function changeSlide(direction) {
     slides[currentSlide].classList.add('active');
 }
 
-
 setInterval(() => {
     if (document.querySelector('.carousel')) {
         changeSlide(1);
     }
 }, 5000);
-
 
 function rotateTestimonials() {
     const testimonials = document.querySelectorAll('.testimonial');
@@ -47,7 +50,6 @@ function rotateTestimonials() {
 }
 
 setInterval(rotateTestimonials, 4000);
-
 
 function addToCart(id, name, price) {
     const existingItem = cart.find(item => item.id === id);
@@ -89,6 +91,20 @@ function removeFromCart(id) {
     }
 }
 
+function updateQuantity(id, change) {
+    const item = cart.find(item => item.id === id);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeFromCart(id);
+        } else {
+            updateCartCount();
+            saveCart();
+            displayCartItems();
+        }
+    }
+}
+
 function updateCartCount() {
     const count = cart.reduce((total, item) => total + item.quantity, 0);
     const cartCountElement = document.getElementById('cart-count');
@@ -101,40 +117,6 @@ function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function displayCartItems() {
-    const cartItemsContainer = document.getElementById('cart-items');
-    const cartTotalElement = document.getElementById('cart-total');
-    
-    if (!cartItemsContainer) return;
-    
-    cartItemsContainer.innerHTML = '';
-    let total = 0;
-    
-    cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <div>
-                <h4>${item.name}</h4>
-                <p>₡${item.price.toLocaleString()} x ${item.quantity}</p>
-            </div>
-            <div>
-                <span>₡${itemTotal.toLocaleString()}</span>
-                <button onclick="removeFromCart('${item.id}')" style="margin-left: 1rem; background: #dc3545; color: white; border: none; padding: 0.5rem; border-radius: 3px; cursor: pointer;">Eliminar</button>
-            </div>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-    });
-    
-    if (cartTotalElement) {
-        cartTotalElement.textContent = `Total: ₡${total.toLocaleString()}`;
-    }
-}
-
-
 function openTab(tabName, element) {
     const tabContents = document.querySelectorAll('.tab-content');
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -145,7 +127,6 @@ function openTab(tabName, element) {
     document.getElementById(tabName).classList.add('active');
     element.classList.add('active');
 }
-
 
 function animateCounter(element, target) {
     let current = 0;
@@ -160,18 +141,63 @@ function animateCounter(element, target) {
     }, 20);
 }
 
+function initGallery() {
+    if (document.querySelector('.gallery-item[data-category]')) {
+        galleryImages = Array.from(document.querySelectorAll('.gallery-item[data-category]')).map(item => {
+            const img = item.querySelector('img');
+            const onclick = item.getAttribute('onclick');
+            const src = onclick.match(/openLightbox\('([^']+)'/)[1];
+            const type = onclick.includes("'video'") ? 'video' : 'image';
+            return { src, type, title: img.alt };
+        });
+    } else if (document.querySelector('.product-card')) {
+        galleryImages = Array.from(document.querySelectorAll('.product-card img[onclick]')).map(img => {
+            const onclick = img.getAttribute('onclick');
+            const src = onclick.match(/openLightbox\('([^']+)'/)[1];
+            return { src, type: 'image', title: img.alt };
+        });
+    }
+}
 
 function openLightbox(src, type = 'image') {
+    if (galleryImages.length === 0) initGallery();
+    
+    currentImageIndex = galleryImages.findIndex(img => img.src === src);
+    if (currentImageIndex === -1) currentImageIndex = 0;
+    
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightbox-content');
     
     if (type === 'image') {
-        lightboxContent.innerHTML = `<img src="${src}" alt="Imagen ampliada">`;
+        lightboxContent.innerHTML = `
+            <img src="${src}" alt="Imagen ampliada">
+            <button class="lightbox-nav prev" onclick="navigateGallery(-1)">‹</button>
+            <button class="lightbox-nav next" onclick="navigateGallery(1)">›</button>
+        `;
     } else if (type === 'video') {
         lightboxContent.innerHTML = `<video controls autoplay muted preload="metadata"><source src="${src}" type="video/mp4">Tu navegador no soporta videos HTML5.</video>`;
     }
     
     lightbox.classList.add('active');
+}
+
+function navigateGallery(direction) {
+    currentImageIndex += direction;
+    if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+    if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+    
+    const currentImage = galleryImages[currentImageIndex];
+    const lightboxContent = document.getElementById('lightbox-content');
+    
+    if (currentImage.type === 'image') {
+        lightboxContent.innerHTML = `
+            <img src="${currentImage.src}" alt="${currentImage.title}">
+            <button class="lightbox-nav prev" onclick="navigateGallery(-1)">‹</button>
+            <button class="lightbox-nav next" onclick="navigateGallery(1)">›</button>
+        `;
+    } else {
+        lightboxContent.innerHTML = `<video controls autoplay muted preload="metadata"><source src="${currentImage.src}" type="video/mp4">Tu navegador no soporta videos HTML5.</video>`;
+    }
 }
 
 function closeLightbox() {
@@ -197,14 +223,13 @@ function searchProducts() {
     
     const searchTerm = searchInput.value.toLowerCase().trim();
     
-    let filteredProducts;
-    
     if (searchTerm === '') {
         displayedProducts = 0;
         displayProducts();
         return;
     }
-    filteredProducts = allProducts.filter(product => 
+    
+    const filteredProducts = allProducts.filter(product => 
         product.name.toLowerCase().includes(searchTerm) || 
         product.description.toLowerCase().includes(searchTerm)
     );
@@ -218,11 +243,11 @@ function searchProducts() {
     loadMoreBtn.style.display = 'none';
     if (filteredProducts.length === 0) {
         productsContainer.innerHTML = '<p style="text-align: center; grid-column: 1/-1; padding: 2rem;">No se encontraron productos que coincidan con tu búsqueda.</p>';
+    } else {
+        setTimeout(() => initGallery(), 100);
     }
 }
-let allProducts = [];
-let displayedProducts = 0;
-const productsPerPage = 9;
+
 function createProductCard(product) {
     const productCard = document.createElement('div');
     productCard.className = 'product-card';
@@ -267,16 +292,13 @@ function displayProducts() {
     } else {
         loadMoreBtn.style.display = 'none';
     }
+    
+    setTimeout(() => initGallery(), 100);
 }
 
 function loadMoreProducts() {
     displayProducts();
 }
-
-
-let currentCategory = 'all';
-
-let sliderPosition = 0;
 
 function moveSlider(direction) {
     const track = document.getElementById('slider-track');
@@ -329,10 +351,8 @@ function actualizarSubcategoria() {
     const categoria = document.getElementById('combo-category').value;
     const subcategoria = document.getElementById('combo-subcategory');
     
-
     subcategoria.innerHTML = '<option value="">Seleccione subcategoría</option>';
     
-
     if (categoria === 'plantas') {
         subcategoria.innerHTML += '<option value="tropicales">Tropicales</option>';
         subcategoria.innerHTML += '<option value="ornamentales">Ornamentales</option>';
@@ -348,7 +368,6 @@ function actualizarSubcategoria() {
     }
 }
 
-
 function abrirGuia() {
     const guia = document.getElementById('interactive-combo').value;
     
@@ -361,7 +380,10 @@ function abrirGuia() {
     }
 }
 
-
+if (window.emailjs && !window._petalo_emailjs_inited) {
+    emailjs.init("C697doILWoQENFK6H");
+    window._petalo_emailjs_inited = true;
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     updateCartCount();
@@ -380,7 +402,9 @@ document.addEventListener('DOMContentLoaded', function() {
         displayCartItems();
     }
     
-
+    if (document.querySelector('.gallery-item') || document.querySelector('.product-card')) {
+        setTimeout(() => initGallery(), 100);
+    }
     
     const lightbox = document.getElementById('lightbox');
     if (lightbox) {
@@ -389,25 +413,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeLightbox();
             }
         });
+        
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    navigateGallery(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateGallery(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
     }
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-
+    
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('newsletter-email').value;
             
-            console.log('Enviando newsletter con:', { correo: email });
-            
             emailjs.send('service_wkc64y3', 'template_urulkzp', {
                 correo: email
             }).then((response) => {
-                console.log('Newsletter enviado exitosamente:', response);
                 if (typeof Swal !== 'undefined') {
                     Swal.fire({
                         title: '¡Gracias por suscribirte!',
@@ -427,8 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-
-
+    
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -437,8 +464,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-            
-            console.log('Enviando contacto con:', { name, email, phone, message });
             
             emailjs.send('service_wkc64y3', 'template_geaw92e', {
                 name,
@@ -450,7 +475,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 recommend: "",
                 comments: ""
             }).then((response) => {
-                console.log('Contacto enviado exitosamente:', response);
                 Swal.fire({
                     title: '¡Mensaje enviado!',
                     text: 'Te contactaremos pronto.',
@@ -469,8 +493,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-
-
+    
     const surveyForm = document.getElementById('survey-form');
     if (surveyForm) {
         surveyForm.addEventListener('submit', function(e) {
@@ -501,23 +524,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-
-(function () {
-  if (window._petalo_patch_applied) return;
-  window._petalo_patch_applied = true;
-
-  function safeInitEmailJS() {
-    try {
-      if (window.emailjs && !window._petalo_emailjs_inited) {
-        emailjs.init("C697doILWoQENFK6H");
-        window._petalo_emailjs_inited = true;
-        console.log("EmailJS inicializado (parche).");
-      }
-    } catch (e) {
-      console.error("Error inicializando EmailJS:", e);
-    }
-  }
-
-  setInterval(safeInitEmailJS, 500);
-})();

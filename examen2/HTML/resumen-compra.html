@@ -84,17 +84,43 @@
                             <h3>Método de Pago</h3>
                             <div class="payment-options">
                                 <label>
-                                    <input type="radio" name="payment" value="card" checked>
-                                    Tarjeta de Crédito/Débito
+                                    <input type="radio" name="payment" value="transfer" checked>
+                                    Transferencia Bancaria
                                 </label>
                                 <label>
-                                    <input type="radio" name="payment" value="transfer">
-                                    Transferencia Bancaria
+                                    <input type="radio" name="payment" value="card">
+                                    Tarjeta de Crédito/Débito
                                 </label>
                                 <label>
                                     <input type="radio" name="payment" value="cash">
                                     Pago Contra Entrega
                                 </label>
+                            </div>
+                            
+                            <div id="card-payment-fields" style="display: none; margin-top: 1rem;; padding: 1rem; background: #f8f8f8; border-radius: 8px;">
+                                <h4>Datos de Tarjeta</h4>
+                                <p style="font-size: 0.9rem;">Por favor completa tus datos de pago</p>
+                                
+                                <div class="form-group">
+                                    <label for="card-name">Nombre en la tarjeta</label>
+                                    <input type="text" id="card-name" placeholder="Ej: Gabriela Gómez">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="card-number">Número de tarjeta</label>
+                                    <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+                                </div>
+                                
+                                <div class="form-row" style="display: flex; gap: 0.5rem;">
+                                    <div class="form-group" style="flex: 1;">
+                                        <label for="card-exp">Fecha de expiración</label>
+                                        <input type="text" id="card-exp" placeholder="MM/AA" maxlength="4">
+                                    </div>
+                                    <div class="form-group" style="flex: 1;">
+                                        <label for="card-cvv">CVV</label>
+                                        <input type="text" id="card-cvv" placeholder="123" maxlength="3">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -133,9 +159,6 @@
                 </div>
             </div>
         </section>
-
-
-
 
 
     </main>
@@ -246,6 +269,15 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             displayOrderItems();
+        });
+    </script>
+    
+    <script>
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.getElementById('card-payment-fields').style.display =
+                    radio.value === 'card' ? 'block' : 'none';
+            });
         });
     </script>
     </div>

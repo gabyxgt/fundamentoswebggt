@@ -166,7 +166,6 @@
 
     <script src="../JS/script.js"></script>
     <script>
-        // Manejo de estados visuales para la encuesta
         document.addEventListener('DOMContentLoaded', function() {
             // Radios
             const radioInputs = document.querySelectorAll('.survey-form input[type="radio"]');
@@ -177,12 +176,11 @@
                     document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
                         radio.closest('label').classList.remove('survey-selected');
                     });
-                    // Agregar clase al label seleccionado
                     this.closest('label').classList.add('survey-selected');
                 });
             });
             
-            // Checkboxes
+            // Checkboxesss
             const checkboxInputs = document.querySelectorAll('.survey-form input[type="checkbox"]');
             checkboxInputs.forEach(input => {
                 input.addEventListener('change', function() {
